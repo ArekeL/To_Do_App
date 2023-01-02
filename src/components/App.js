@@ -11,7 +11,7 @@ class App extends Component {
 				text: "Zrobić zakupy",
 				date: "2022-12-31",
 				important: false,
-				active: false,
+				active: true,
 				finishDate: null,
 			},
 			{
@@ -34,7 +34,7 @@ class App extends Component {
 				id: 3,
 				text: "Zabrać samochód",
 				date: "2022-12-31",
-				important: true,
+				important: false,
 				active: true,
 				finishDate: null,
 			},
@@ -42,7 +42,7 @@ class App extends Component {
 				id: 4,
 				text: "Posprzątać garaż",
 				date: "2023-02-01",
-				important: true,
+				important: false,
 				active: true,
 				finishDate: null,
 			},
@@ -50,7 +50,7 @@ class App extends Component {
 				id: 5,
 				text: "Ustalić sptkanie z Samuelem",
 				date: "2023-01-25",
-				important: true,
+				important: false,
 				active: true,
 				finishDate: null,
 			},
@@ -58,7 +58,7 @@ class App extends Component {
 				id: 6,
 				text: "Namalować obraz",
 				date: "2023-03-20",
-				important: true,
+				important: false,
 				active: true,
 				finishDate: null,
 			},
@@ -84,7 +84,6 @@ class App extends Component {
 		this.setState({
 			tasks,
 		});
-		console.log(this.state.tasks);
 	};
 	deleteTask = (id) => {
 		// method 1
