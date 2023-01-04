@@ -7,6 +7,7 @@ class AddTask extends Component {
 		addText: "",
 		checked: false,
 		date: this.minDate,
+		error: false,
 	};
 	handleAddText = (e) => {
 		this.setState({
@@ -27,17 +28,21 @@ class AddTask extends Component {
 
 	handleClick = () => {
 		const { addText, date, checked } = this.state;
-		if (addText.length > 2 && addText !== "   ") {
+		if (addText.length > 2) {
 			const add = this.props.add(addText, date, checked);
 			if (add) {
 				this.setState({
 					addText: "",
 					checked: false,
 					date: this.minDate,
+					error: false,
 				});
 			}
 		} else {
-			alert("Too short text"); // Ultimately, text under the input
+			this.setState({
+				addText: "",
+				error: true,
+			});
 		}
 	};
 
@@ -45,10 +50,13 @@ class AddTask extends Component {
 		let maxDate = this.minDate.slice(0, 4) * 1 + 2;
 		maxDate = maxDate + "-12-31";
 		return (
-			<div className='form'>
+			<div>
 				<input
+					className='textFild'
 					type='text'
-					placeholder='add task'
+					placeholder={
+						this.state.error ? "Sing at least 3 letters" : "add task"
+					}
 					value={this.state.addText}
 					onChange={this.handleAddText}
 				/>
